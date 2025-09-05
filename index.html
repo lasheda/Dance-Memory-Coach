@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>DANCE MEMORY COACH</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>DANCE MEMORY COACH</h1>
+
+  <section>
+    <h2>Listas</h2>
+    <input type="text" id="listNameInput" placeholder="Nombre de la lista">
+    <button id="addListBtn">Agregar lista</button>
+    <select id="listSelect"></select>
+    <div class="row">
+      <button id="saveBtn">Guardar</button>
+      <input type="file" id="importFile" accept=".csv">
+      <button id="exportBtn">Exportar</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>Pasos</h2>
+    <div class="row">
+      <input type="text" id="nameInput" placeholder="Nombre del paso">
+      <input type="number" id="timeInput" placeholder="Tiempos" min="1" style="width: 70px;">
+      <button id="addStepBtn">Agregar paso</button>
+    </div>
+    <ul id="stepsList"></ul>
+  </section>
+
+  <section>
+    <h2>Configuración</h2>
+    <div class="row">
+      <label>Velocidad:</label>
+      <input type="number" id="speedInput" step="0.01" min="0.01" max="10" value="1.00">
+      <input type="range" id="speedRange" min="0.01" max="10" step="0.01" value="1.00">
+    </div>
+    <div class="row">
+      <label>Volumen:</label>
+      <input type="range" id="volumeRange" min="0" max="1" step="0.01" value="1">
+    </div>
+    <div class="row">
+      <label>Modo:</label>
+      <select id="modeSelect">
+        <option value="normal">Normal</option>
+        <option value="loop">Bucle infinito</option>
+        <option value="random">Total Random</option>
+        <option value="choreo">Coreografía simple</option>
+        <option value="choreoLoop">Coreografía loop</option>
+      </select>
+    </div>
+  </section>
+
+  <section>
+    <h2>Control</h2>
+    <button id="startBtn">▶ Iniciar</button>
+    <button id="stopBtn">⏸ Pausar</button>
+    <button id="resetBtn">🔄 Reset</button>
+    <div id="currentStep">⏳ Listo</div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
