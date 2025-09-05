@@ -1,19 +1,23 @@
-self.addEventListener('install', (e) => {
+const CACHE = "dmc-v2";
+const ASSETS = [
+  "./",
+  "./index.html",
+  "./styles.css",
+  "./script.js",
+  "./manifest.json",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png"
+];
+self.addEventListener("install", (e)=>{
+  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));
+});
+self.addEventListener("activate", (e)=>{
   e.waitUntil(
-    caches.open('dance-memory-coach').then((cache) => {
-      return cache.addAll([
-        './',
-        './index.html',
-        './styles.css',
-        './script.js',
-        './manifest.json'
-      ]);
-    })
+    caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))
   );
 });
-
-self.addEventListener('fetch', (e) => {
+self.addEventListener("fetch", (e)=>{
   e.respondWith(
-    caches.match(e.request).then((response) => response || fetch(e.request))
+    caches.match(e.request).then(res => res || fetch(e.request))
   );
 });
