@@ -1,23 +1,22 @@
-const CACHE = "dmc-v2";
-const ASSETS = [
-  "./",
-  "./index.html",
-  "./styles.css",
-  "./script.js",
-  "./manifest.json",
-  "./icons/icon-192.png",
-  "./icons/icon-512.png"
+const CACHE_NAME = 'dmc-v3';
+const urlsToCache = [
+  './',
+  './index.html',
+  './styles.css',
+  './script.js',
+  './manifest.json'
 ];
-self.addEventListener("install", (e)=>{
-  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));
-});
-self.addEventListener("activate", (e)=>{
-  e.waitUntil(
-    caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(urlsToCache);
+    })
   );
 });
-self.addEventListener("fetch", (e)=>{
-  e.respondWith(
-    caches.match(e.request).then(res => res || fetch(e.request))
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request).then((response) => response || fetch(event.request))
   );
 });
