@@ -1,0 +1,49 @@
+*{box-sizing:border-box}
+:root{
+  --bg:#0b1320;
+  --panel:#121d2f;
+  --accent:#1e6fff;
+  --accent-2:#00c2ff;
+  --text:#e8eef6;
+  --muted:#97a6b9;
+  --success:#23c55e;
+  --danger:#ef4444;
+  --card-shadow:0 10px 24px rgba(0,0,0,.35);
+}
+body{
+  margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+  background:linear-gradient(180deg,#0b1320 0%,#0d1b2a 100%); color:var(--text);
+}
+.app-header{padding:18px 16px; text-align:center; background:#0d1b2a; border-bottom:1px solid rgba(255,255,255,.06)}
+.app-header h1{margin:0; font-weight:800; letter-spacing:.5px}
+.container{max-width:900px; margin:22px auto; padding:0 14px}
+.card{background:var(--panel); border-radius:16px; padding:16px; box-shadow:var(--card-shadow); margin-bottom:18px; border:1px solid rgba(255,255,255,.06)}
+.row{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.row.gap{margin:8px 0 6px}
+.row.actions{justify-content:space-between}
+.controls .label{width:110px; color:var(--muted)}
+.grow{flex:1}
+input,select,button{
+  font-size:16px; padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.08);
+  background:#0f1a2a; color:var(--text); outline:none;
+}
+input:focus,select:focus{border-color:var(--accent)}
+.btn{background:#1a2b47; cursor:pointer; transition:.15s transform,.2s background}
+.btn:hover{background:#203556; transform:translateY(-1px)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2))}
+.btn.success{background:linear-gradient(90deg,#22c55e,#16a34a)}
+.btn.danger{background:linear-gradient(90deg,#ef4444,#dc2626)}
+.steps{list-style:none; padding:0; margin:10px 0 0}
+.steps li{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  background:#0f192a; padding:10px 12px; border-radius:12px; border:1px solid rgba(255,255,255,.06);
+}
+.step-name{font-weight:600}
+.step-time{color:var(--muted); margin-left:6px}
+.step-controls button{padding:6px 10px; border-radius:10px; background:#162540}
+.step-controls button:hover{background:#1d3257}
+.display{
+  margin-top:14px; text-align:center; font-size:2rem; font-weight:800;
+  background:radial-gradient(1200px 200px at 50% 0%,rgba(30,111,255,.25),transparent 60%), #0a1424;
+  border:1px solid rgba(255,255,255,.1); border-radius:18px; padding:22px; box-shadow:0 18px 40px rgba(0,0,0,.5);
+}

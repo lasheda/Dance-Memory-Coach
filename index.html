@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>🎵 Dance Memory Coach</title>
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d1b2a">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Dance Memory Coach</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h2>Listas</h2>
+      <div class="row gap">
+        <input type="text" id="listNameInput" placeholder="Nombre de la lista">
+        <button id="addListBtn" class="btn primary">Agregar lista</button>
+        <select id="listSelect" class="grow"></select>
+      </div>
+
+      <div class="row actions">
+        <button id="saveBtn" class="btn success">Guardar</button>
+        <button id="importBtn" class="btn">Importar</button>
+        <input type="file" id="importFile" accept=".csv" style="display:none;">
+        <button id="exportBtn" class="btn">Exportar</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Pasos</h2>
+      <div class="row gap">
+        <input type="text" id="nameInput" placeholder="Nombre del paso" class="grow">
+        <input type="number" id="timeInput" placeholder="Tiempos" min="1" step="1" style="width:90px">
+        <button id="addStepBtn" class="btn primary">Agregar paso</button>
+      </div>
+      <ul id="stepsList" class="steps"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Configuración</h2>
+      <div class="row controls">
+        <label class="label">Velocidad</label>
+        <input type="number" id="speedInput" step="0.01" min="0.01" max="10" value="1.00" style="width:100px">
+        <input type="range" id="speedSlider" step="0.01" min="0.01" max="10" value="1.00" class="grow">
+      </div>
+      <div class="row controls">
+        <label class="label">Volumen</label>
+        <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" class="grow">
+      </div>
+      <div class="row controls">
+        <label class="label">Modo</label>
+        <select id="modeSelect" class="grow">
+          <option value="normal">Normal</option>
+          <option value="loop">Bucle infinito</option>
+          <option value="random">Total random</option>
+          <option value="choreo">Coreografía simple</option>
+          <option value="choreoLoop">Coreografía loop</option>
+        </select>
+      </div>
+      <div class="row">
+        <button id="startBtn" class="btn primary">▶ Iniciar</button>
+        <button id="stopBtn" class="btn">⏸ Pausar</button>
+        <button id="resetBtn" class="btn danger">🔄 Reset</button>
+      </div>
+      <div id="currentStep" class="display">⏳ Listo</div>
+    </section>
+  </main>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(console.error);
+      });
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
