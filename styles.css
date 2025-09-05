@@ -1,0 +1,55 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background: #111;
+  color: #eee;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #ff4081;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  gap: 10px;
+}
+
+input, select, button {
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+button {
+  background: #ff4081;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e91e63;
+}
+
+#stepsList {
+  list-style: none;
+  padding: 0;
+}
+
+#stepsList li {
+  margin: 5px 0;
+  padding: 5px;
+  background: #222;
+  border-radius: 4px;
+}
+
+.step-controls {
+  float: right;
+}
+
+.step-btn {
+  margin-left: 5px;
+  background: #444;
+}
